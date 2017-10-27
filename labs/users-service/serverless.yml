@@ -1,0 +1,34 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+service: users
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  create:
+    handler: users/create.createUser
+    events:
+      - http:
+          path: users/create
+          method: post
+          cors: true
+  get:
+    handler: users/get.getUser
+    events:
+      - http:
+          path: users/{id}
+          method: get
+          cors: true
+  delete:
+    handler: users/delete.deleteUser
+    events:
+      - http:
+          path: users/{id}
+          method: delete
+          cors: true
