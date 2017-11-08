@@ -48,16 +48,22 @@ $ curl --version
 
 ```
 $ npm install -g serverless
+```
 
+Test to see that you have Serverless Framework installed properly:
+
+```
 $ serverless version
 ```
 
 ### AWS Setup
 
-* AWS account setup
-* AWS credentials configured with the Serverless Framework
+Follow instructions in the [tutorial](https://serverless.com/provider-setup/#get-started) to:
 
-Follow instructions in the [tutorial](https://serverless.com/provider-setup/#get-started).
+* Setup AWS account
+* Configured AWS credentials with the Serverless Framework
+
+**Note**: Each workshop participant needs to setup their own AWS account.
 
 ## Labs Code Examples
 
