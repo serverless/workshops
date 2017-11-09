@@ -67,15 +67,19 @@ Follow instructions in the [tutorial](https://serverless.com/provider-setup/#get
 
 ## Labs Code Examples
 
-To follow along with the workshop, please get the code examples:
+As part of the workshop, we will do the following exercises.
+
+### Exercise 1: Hello World - creating the hello world app
+
+Create the app from scratch:
 
 ```
-$ cd <user folder>
-$ git clone https://github.com/serverless/workshops.git
-$ cd workshops
+$ cd <user_folder>
+$ serverless create --template hello-world --path hello-sls
+$ sls deploy
 ```
 
-### Exercise 1: Hello World - dynamic app
+### Exercise 2: Hello World - dynamic app
 
 Open the `handler.js` file in your text editor and update it with the following code:
 
@@ -110,10 +114,10 @@ module.exports.helloWorld = (event, context, callback) => {
 Then, deploy the new code changes:
 
 ```
-sls deploy
+$ sls deploy
 ```
 
-### Exercise 2: Users Service - install project
+### Exercise 3: Users Service - install project
 
 Let's install the `users-service` project from the Github repo:
 
@@ -131,11 +135,10 @@ $ cd users-service
 Then, deploy the new project:
 
 ```
-cd
-sls deploy
+$ sls deploy
 ```
 
-### Exercise 3: Users Service - calling the API
+### Exercise 4: Users Service - calling the API
 
 **Note**: We need to fetch the urls for the deployed endpoints, and replace the urls in the following code fragments, before we run them.
 
@@ -143,6 +146,18 @@ sls deploy
 
 ```
 $ sls info
+```
+
+#### Get User
+
+Go to the browser and type in the url:
+
+`https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/1`
+
+Or you can `curl` it on the command line:
+
+```
+$ curl -v -X GET https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/1
 ```
 
 #### Create User
@@ -153,29 +168,13 @@ $ curl -v -X POST \
        -d '{"user": {"name":"John Doe", "email":"john.doe@email.com"}}'
 ```
 
-#### Get User
-
-```
-$ curl -v -X GET https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/1
-```
-
-Simulate an error and see it in the logs:
-
-```
-$ curl -v -X GET https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/999
-```
-
-```
-$ sls logs -f get
-```
-
 #### Delete User
 
 ```
 $ curl -v -X DELETE https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/1
 ```
 
-### Exercise 4: Users Service - other CLI commands
+### Exercise 5: Users Service - other CLI commands
 
 #### Fetch the project urls
 
@@ -183,10 +182,26 @@ $ curl -v -X DELETE https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/u
 $ sls info
 ```
 
-#### Tail logs for a function
+#### Tailing logs
+
+Let's simulate an error and see it in the logs.
+
+Tail the log for errors:
 
 ```
+$ cd <user_folder>/users-service
+
 $ sls logs -f get -t
+```
+
+Go to the browser and type in the url:
+
+`https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/999`
+
+Or you can `curl` it on the command line:
+
+```
+$ curl -v -X GET https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/users/999
 ```
 
 #### Fetch the project metrics
@@ -202,7 +217,7 @@ $ sls invoke local -f get -p \
        users/test/event.get.json
 ```
 
-#### Invoke a function on the cloud
+#### Invoke a function remotely
 
 ```
 $ sls invoke -f get -p \
