@@ -33,6 +33,7 @@ module.exports.getUser = (event, context, callback) => {
       body: JSON.stringify({
         data: data,
         message: 'User fetched successfully.',
+        input: event,
       }),
     };
     callback(null, response);
