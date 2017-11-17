@@ -2,6 +2,9 @@
 
 A companion repository for workshops with instructions and code examples.
 
+## Slides
+https://drive.google.com/file/d/13D6U2yMwDrg5BJQQPVx_CG2AdF5dA_CV/view?usp=sharing
+
 ## Pre-requisites
 
 These steps need to be completed before the workshop:
